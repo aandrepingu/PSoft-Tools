@@ -1,0 +1,36 @@
+.landinglogo {
+  width: 30vw;
+  height: 30vw;
+  object-fit: contain;
+  margin-top: 20vh;
+  border-radius: 50%;
+  animation: zoom-in-zoom-out 2s ease infinite;
+}
+
+.landinglogo:hover {
+  transform: scale(1.1, 1.1);
+  box-shadow: 0 0 10px 5px rgba(143, 182, 218, 0.5);
+}
+
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.landing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  align-items: center;
+  background-color: #224666;
+}
+

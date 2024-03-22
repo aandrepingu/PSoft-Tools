@@ -8,10 +8,12 @@ import { get, post } from "../lib/api";
 
 export default function Index() {
   const [data, setData] = useState("hello");
+  const [precondition, setPrecondition] = useState("");
   const [code, setCode] = useState("");
+  const [postcondition, setPostcondition] = useState("");
   
   const handleClick = () => {
-    post("http://localhost:3000", code)
+    post("http://localhost:3000", code, precondition, postcondition)
       .then(response => {
         //console.log(response);
         setData(response);
@@ -22,15 +24,24 @@ export default function Index() {
   };
 
   const handleClick1 = () => {
-        setData(""); 
-        //setCode("// input code");
+    setPrecondition("");
+    setData(""); 
+    setPostcondition("");
   };
   
+  const handlePreEditorChange = (value: string | undefined) => {
+    if (value) {
+      setPrecondition(value);
+    }
+  };
   const handleEditorChange = (value: string | undefined) => {
     if (value) {
-      //console.log(value);
       setCode(value);
-      //console.log(code);
+    }
+  };
+  const handlePostEditorChange = (value: string | undefined) => {
+    if (value) {
+      setPostcondition(value);
     }
   };
 
@@ -46,12 +57,25 @@ export default function Index() {
       >
         <div style={{ width: "50%", justifyContent: "left" }}>
           <Editor
-            height="92vh"
+            height="10vh"
+            width="50vw"
+            defaultLanguage="javascript"
+            defaultValue="// input precondition"
+            onChange={handlePreEditorChange}
+          />
+          <Editor
+            height="72vh"
             width="50vw"
             defaultLanguage="javascript"
             defaultValue="// input code"
             onChange={handleEditorChange}
-            
+          />
+          <Editor
+            height="10vh"
+            width="50vw"
+            defaultLanguage="javascript"
+            defaultValue="// input postcondition"
+            onChange={handlePostEditorChange}
           />
         </div>
         <div style={{position: "relative", paddingLeft: 15, whiteSpace: "pre-line", textAlign: "start", tabSize: 5}}>{data}</div>

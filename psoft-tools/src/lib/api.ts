@@ -1,4 +1,4 @@
-export async function post(url: string, body: string) {
+export async function post(url: string, body: string, precondition: string, postcondition: string) {
   const response = await fetch(url, {
     method: "POST",
     headers: {

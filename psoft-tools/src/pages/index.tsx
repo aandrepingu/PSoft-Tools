@@ -5,12 +5,15 @@ import { get, post } from "../lib/api";
 
 
 //Create Routing File
+const DEFAULT_PRECONDITION = "//input precondition";
+const DEFAULT_CODE = "//input code";
+const DEFAULT_POSTCONDITION = "//input postcondition"
 
 export default function Index() {
   const [data, setData] = useState("hello");
-  const [precondition, setPrecondition] = useState("");
-  const [code, setCode] = useState("");
-  const [postcondition, setPostcondition] = useState("");
+  const [precondition, setPrecondition] = useState(DEFAULT_PRECONDITION);
+  const [code, setCode] = useState(DEFAULT_CODE);
+  const [postcondition, setPostcondition] = useState(DEFAULT_POSTCONDITION);
   
   const handleClick = () => {
     post("http://localhost:3000", code, precondition, postcondition)
@@ -24,9 +27,10 @@ export default function Index() {
   };
 
   const handleClick1 = () => {
-    setPrecondition("");
-    setData(""); 
-    setPostcondition("");
+    setPrecondition(DEFAULT_PRECONDITION);
+    setCode(DEFAULT_CODE); 
+    setPostcondition(DEFAULT_POSTCONDITION);
+    setData("");
   };
   
   const handlePreEditorChange = (value: string | undefined) => {
@@ -45,7 +49,7 @@ export default function Index() {
     }
   };
 
-  
+
   return (
     <div>
       <div>
@@ -60,21 +64,21 @@ export default function Index() {
             height="10vh"
             width="50vw"
             defaultLanguage="javascript"
-            defaultValue="// input precondition"
+            value={precondition}
             onChange={handlePreEditorChange}
           />
           <Editor
             height="72vh"
             width="50vw"
             defaultLanguage="javascript"
-            defaultValue="// input code"
+            value={code}
             onChange={handleEditorChange}
           />
           <Editor
             height="10vh"
             width="50vw"
             defaultLanguage="javascript"
-            defaultValue="// input postcondition"
+            value={postcondition}
             onChange={handlePostEditorChange}
           />
         </div>

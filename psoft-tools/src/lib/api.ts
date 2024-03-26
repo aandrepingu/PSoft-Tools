@@ -1,4 +1,21 @@
-export async function post(url: string, body: string, precondition: string, postcondition: string) {
+export async function post_Tripple(url: string, body: string, precondition: string, postcondition: string) {
+  const obj = {preCon: JSON.stringify(precondition), code: JSON.stringify(body), postCon: JSON.stringify(postcondition)};
+  //console.log("api0");
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(obj),
+
+  });
+  //console.log("api1");
+  const data = await response.json();
+  //console.log(data);
+  return data;
+}
+
+export async function post(url: string, body: string) {
   const response = await fetch(url, {
     method: "POST",
     headers: {

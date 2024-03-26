@@ -1,7 +1,7 @@
 import { Editor } from "@monaco-editor/react";
 import Navbar from "../components/Navbar";
 import { useState } from "react";
-import { get, post } from "../lib/api";
+import { get, post_Tripple } from "../lib/api";
 
 
 //Create Routing File
@@ -16,10 +16,12 @@ export default function Index() {
   const [postcondition, setPostcondition] = useState(DEFAULT_POSTCONDITION);
   
   const handleClick = () => {
-    post("http://localhost:3000", code, precondition, postcondition)
+    post_Tripple("http://localhost:3000/Hoars_Tripple", code, precondition, postcondition)
       .then(response => {
-        //console.log(response);
-        setData(response);
+        //console.log("HI");
+        console.log(response);
+
+        setData(response.toString());
       })  
       .catch(error => {
         console.error("error: ", error);

@@ -26,11 +26,24 @@ export default function Index() {
       })
   };
 
-  const handleClick1 = () => {
+  const handleClickClear = () => {
     setPrecondition(DEFAULT_PRECONDITION);
     setCode(DEFAULT_CODE); 
     setPostcondition(DEFAULT_POSTCONDITION);
     setData("");
+  };
+
+  const handleClickPre = () => {
+    setPrecondition(DEFAULT_PRECONDITION);
+  };
+
+  const handleClickCode = () => {
+    setCode(DEFAULT_CODE); 
+    setData("");
+  };
+
+  const handleClickPost = () => {
+    setPostcondition(DEFAULT_POSTCONDITION);
   };
   
   const handlePreEditorChange = (value: string | undefined) => {
@@ -67,6 +80,10 @@ export default function Index() {
             value={precondition}
             onChange={handlePreEditorChange}
           />
+          <button 
+            onClick={handleClickPre}
+            style={{ position: "absolute", top: "10vh", left: "42vw"}}
+          >Reset Pre</button>
           <Editor
             height="72vh"
             width="50vw"
@@ -74,6 +91,10 @@ export default function Index() {
             value={code}
             onChange={handleEditorChange}
           />
+          <button 
+            onClick={handleClickCode}
+            style={{ position: "absolute", top: "82vh", left: "41vw"}}
+          >Reset Code</button>
           <Editor
             height="10vh"
             width="50vw"
@@ -81,10 +102,14 @@ export default function Index() {
             value={postcondition}
             onChange={handlePostEditorChange}
           />
+          <button 
+            onClick={handleClickPost}
+            style={{ position: "absolute", top: "92vh", left: "41.5vw"}}
+          >Reset Post</button>
         </div>
         <div style={{position: "relative", paddingLeft: 15, whiteSpace: "pre-line", textAlign: "start", tabSize: 5}}>{data}</div>
         <button 
-          onClick={handleClick1}
+          onClick={handleClickClear}
           style={{position: "absolute", right: 150, bottom: 10}}
           >Clear</button>
         <button 

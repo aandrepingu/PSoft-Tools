@@ -1,15 +1,19 @@
 import { EditorProps, useMonaco } from "@monaco-editor/react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Editor } from "@monaco-editor/react";
 import useDafny from "../hooks/useDafny";
+import * as monacoTypes from "monaco-editor";
 
 export default function DafnyEditor({
   EditorProps,
+  markers,
 }: {
   EditorProps: EditorProps;
+  markers?: monacoTypes.editor.IMarkerData[];
 }) {
   const monaco = useMonaco();
   const dafny = useDafny();
+  const editorRef = useRef<monacoTypes.editor.IStandaloneCodeEditor>();
   const language = dafny.langDef;
   useEffect(() => {
     let cleanup: null | (() => void) = null;
@@ -34,6 +38,13 @@ export default function DafnyEditor({
         }
       );
       cleanup = dispose;
+
+      if (markers && editorRef.current) {
+        const model = editorRef.current.getModel(); // Get the model
+        if (model) {
+          monaco.editor.setModelMarkers(model, "dafny", markers); // Call setModelMarkers only if the model is not null
+        }
+      }
     }
     return () => {
       if (!monaco || !cleanup) return;
@@ -41,5 +52,12 @@ export default function DafnyEditor({
     };
   }, [monaco]);
 
-  return <Editor {...EditorProps} />;
+  return (
+    <Editor
+      onMount={(editor) => {
+        editorRef.current = editor;
+      }}
+      {...EditorProps}
+    />
+  );
 }

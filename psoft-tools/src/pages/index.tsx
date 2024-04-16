@@ -3,6 +3,7 @@ import { useState } from "react";
 import { post } from "../lib/api";
 import { ThreeDots } from "react-loader-spinner";
 import DafnyEditor from "../components/DafnyEditor";
+import * as MonacoTypes from "monaco-editor";
 
 //Create Routing File
 interface ErrorObject {
@@ -16,6 +17,7 @@ export default function Index() {
   const [data, setData] = useState("");
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
+  const [markers, setMarkers] = useState<MonacoTypes.editor.IMarkerData[]>([]);
 
   const handleVerify = () => {
     setLoading(true);
@@ -54,6 +56,18 @@ export default function Index() {
               errorMessage,
             });
           }
+          setMarkers(
+            errorObjects.map((error) => {
+              return {
+                startLineNumber: error.line,
+                startColumn: error.column,
+                endLineNumber: error.line,
+                endColumn: error.column,
+                message: error.errorMessage,
+                severity: MonacoTypes.MarkerSeverity.Error,
+              };
+            })
+          );
         }
       })
       .catch((error) => {
@@ -75,14 +89,11 @@ export default function Index() {
 
   const handleClick1 = () => {
     setData("");
-    //setCode("// input code");
   };
 
   const handleEditorChange = (value: string | undefined) => {
     if (value) {
-      //console.log(value);
       setCode(value);
-      //console.log(code);
     }
   };
 
@@ -103,6 +114,7 @@ export default function Index() {
               onChange: handleEditorChange,
               defaultLanguage: "dafny",
             }}
+            markers={markers}
           />
         </div>
         <div className="flex flex-col justify-center relative pl-8">

@@ -42,6 +42,7 @@ export default function DafnyEditor({
       if (markers && editorRef.current) {
         const model = editorRef.current.getModel(); // Get the model
         if (model) {
+          console.log("setting markers");
           monaco.editor.setModelMarkers(model, "dafny", markers); // Call setModelMarkers only if the model is not null
         }
       }
@@ -50,7 +51,7 @@ export default function DafnyEditor({
       if (!monaco || !cleanup) return;
       cleanup();
     };
-  }, [monaco]);
+  }, [monaco, markers]);
 
   return (
     <Editor

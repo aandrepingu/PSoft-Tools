@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { post } from "../lib/api";
 import { ThreeDots } from "react-loader-spinner";
 import DafnyEditor from "../components/DafnyEditor";
@@ -19,7 +19,16 @@ export default function Index() {
 
   const handleVerify = () => {
     setLoading(true);
-    post("http://localhost:3000/verify", code)
+    var obj = {
+      requester: "postman",
+      files: [
+        {
+        name: "problem.dfy",
+        content: globalThis.dafnyCode
+        }
+      ]
+    }
+    post("http://localhost/compile", JSON.stringify(obj))
       .then((response) => {
         setLoading(false);
         setData(response);
@@ -95,7 +104,6 @@ export default function Index() {
         style={{ paddingTop: "50px", width: "100%", overflow: "hidden" }}
       >
         <div style={{ width: "50%", justifyContent: "left" }}>
-
           <DafnyEditor
             EditorProps={{
               height: "92vh",
@@ -114,7 +122,6 @@ export default function Index() {
             )}
           </div>
           <div className="flex flex-row justify-evenly max-h-11 mb-4">
-            <button onClick={handleClickClear}>Clear</button>
             <button onClick={handleVerify}>Verify Dafny</button>
             <button onClick={handleRun}>Run Dafny</button>
           </div>

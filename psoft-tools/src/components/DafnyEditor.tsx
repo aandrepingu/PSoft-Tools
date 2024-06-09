@@ -1,5 +1,5 @@
 import { EditorProps, useMonaco } from "@monaco-editor/react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Editor } from "@monaco-editor/react";
 import useDafny from "../hooks/useDafny";
 
@@ -41,5 +41,27 @@ export default function DafnyEditor({
     };
   }, [monaco]);
 
-  return <Editor {...EditorProps} />;
+  const editorRef = useRef(null);
+
+  function handleEditorDidMount(editor, monaco) {
+    editorRef.current = editor;
+  }
+
+  function showValue() {
+    globalThis.dafnyCode = editorRef.current?.getValue();
+  }
+
+  function clearValue() {
+    editorRef.current?.setValue("");
+  }
+
+   return (<div><button onClick={clearValue}>Clear</button>
+        <Editor {
+          ...EditorProps} 
+          value={"// Please enter Dafny code below and delete this comment!"}
+          onMount={handleEditorDidMount}
+          onChange={showValue}
+        />
+      </div>
+    );
 }

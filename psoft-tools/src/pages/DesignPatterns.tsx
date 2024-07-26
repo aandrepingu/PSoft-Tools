@@ -1,7 +1,6 @@
 import Navbar from "../components/Navbar";
 import Menu from "../components/DesignPatternsMenu";
 
-
 export default function DesignPatterns() {
     return (
         <div >

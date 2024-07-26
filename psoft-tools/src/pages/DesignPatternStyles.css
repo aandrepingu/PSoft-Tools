@@ -1,0 +1,19 @@
+
+.lower{
+    display: inline-block;
+}
+.container{
+    position: relative;
+}
+.menuBar{
+    display: inline-block;
+
+}
+
+.mainContent_ {
+        border-width: 10px;
+    display: inline-block;
+    
+    background-color: palegoldenrod;
+    border-color: "#ffef0e";
+}

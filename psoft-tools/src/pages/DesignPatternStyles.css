@@ -1,19 +1,41 @@
-
-.lower{
-    display: inline-block;
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
-.container{
-    position: relative;
-}
-.menuBar{
-    display: inline-block;
 
+.navbar {
+    flex: 0 0 auto;
+}
+
+.lower {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.menuBar {
+    flex: 0 0 200px;
+    border-right: 1px solid #ccc;
 }
 
 .mainContent_ {
-        border-width: 10px;
-    display: inline-block;
-    
-    background-color: palegoldenrod;
-    border-color: "#ffef0e";
+    flex: 1;
+    padding: 20px;
+    border-left: 60px solid #343131;
+    border-top: 50px solid grey;
+    text-align: left;
+}
+
+.subList {
+    padding-left: 30px;
+}
+
+ol {
+    padding-left: 20px;
+}
+
+li {
+    list-style-position: outside;
+    list-style: decimal;
+
 }

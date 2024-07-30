@@ -1,6 +1,37 @@
-.mainContent {
-    display: block;
-    top: 50px;
-    width: calc(100% -250px);
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
 
+.navbar {
+    flex: 0 0 auto;
+}
+
+.lower {
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.menuBar {
+    flex: 0 0 200px;
+    border-right: 1px solid #ccc;
+}
+
+.mainContent_ {
+    flex: 1;
+    padding: 20px;
+    border-left: 60px solid #343131;
+    border-top: 50px solid grey;
+    text-align: left;
+}
+
+
+
+li {
+    display: list-item;
+    list-style: decimal;
+
+    list-style-position: inside;
+    
 }

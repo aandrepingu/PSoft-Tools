@@ -35,3 +35,7 @@ li {
     list-style-position: inside;
     
 }
+
+.notNumbered{
+    list-style: circle;
+}

@@ -1,6 +1,6 @@
 import Navbar from "../../components/Navbar";
 import Menu from "../../components/DesignPatternsMenu";
-import "./CreationalStyles.css"
+import "./StructuralStyles.css"
 
 
 export default function Factory() {
@@ -16,7 +16,7 @@ export default function Factory() {
                 </div>
                 <div className="mainContent_">
                     <div style={{ textAlign: "center" }}>
-                        <div style={{fontSize:"40px"}}>FACTORY PATTERN</div>
+                        <div style={{fontSize:"40px"}}>FACADE PATTERN</div>
                     </div>
                     <div>
                         The factory pattern is a creational pattern where the role of creating objects is given to a superclass or interface, which can be called the factory.

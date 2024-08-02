@@ -1,6 +1,6 @@
 import Navbar from "../../components/Navbar";
 import Menu from "../../components/DesignPatternsMenu";
-import "./CreationalStyles.css"
+import "./StructuralStyles.css"
 
 
 export default function Factory() {
@@ -16,22 +16,21 @@ export default function Factory() {
                 </div>
                 <div className="mainContent_">
                     <div style={{ textAlign: "center" }}>
-                        <div style={{fontSize:"40px"}}>FACTORY PATTERN</div>
+                        <div style={{fontSize:"40px"}}>PROXY PATTERN</div>
                     </div>
                     <div>
-                        The factory pattern is a creational pattern where the role of creating objects is given to a superclass or interface, which can be called the factory.
-                        This is especially useful when multiple subclasses may need to be created, as the factory takes care of generating an object of the correct subclass.
+                        The proxy design pattern is a structural pattern where a proxy object is created to handle access to an object.
                     </div>
                     <div>
                         <div className="advantages"><div style={{ fontSize: "25px" }}>Advantages</div>
                             <ul style={{ paddingLeft: "40px" }}>
-                                <li className="notNumbered">Easily extendible</li>
-                                <li className="notNumbered">Reusable code</li>
+                                <li className="notNumbered">Prevents clients from accessing data they should not be able to</li>
+                           
                             </ul>
                         </div>
                         <div className="disadvantages"><div style={{ fontSize: "25px" }}>Disadvantages</div>
                             <ul style={{ paddingLeft: "40px" }}>
-                                <li className="notNumbered">Adding more classes and interfaces increases the complexity of the code</li>
+                                <li className="notNumbered">Adds another layer of complexity to the code</li>
                             </ul>
                         </div>
                     </div>

@@ -22,7 +22,7 @@ export default function DesignPatternsMenu() {
                 </Link>
             </div >
             <div className="menuItem">
-                <Link to="/Creational/CreationalPatterns">
+                <Link to="/Structural/StructuralPatterns">
                     Structural design patterns
                 </Link>
             </div>

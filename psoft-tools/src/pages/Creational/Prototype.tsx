@@ -16,22 +16,23 @@ export default function Factory() {
                 </div>
                 <div className="mainContent_">
                     <div style={{ textAlign: "center" }}>
-                        <div style={{fontSize:"40px"}}>FACTORY PATTERN</div>
+                        <div style={{ fontSize: "40px" }}>PROTOTYPE PATTERN</div>
                     </div>
                     <div>
-                        The factory pattern is a creational pattern where the role of creating objects is given to a superclass or interface, which can be called the factory.
-                        This is especially useful when multiple subclasses may need to be created, as the factory takes care of generating an object of the correct subclass.
+                        The prototype design pattern is a creational pattern that allows objects to be created by copying an existing object. This is especially important
+                        if creating objects from scratch requires time consuming operations. When using this pattern, a prototype interface should be created. Inside this interface,
+                        a clone() method should be created. Classes that implement this interface will overwrite the clone method to fit the needs of the class.
                     </div>
                     <div>
                         <div className="advantages"><div style={{ fontSize: "25px" }}>Advantages</div>
                             <ul style={{ paddingLeft: "40px" }}>
-                                <li className="notNumbered">Easily extendible</li>
+                                <li className="notNumbered">Saves time and memory when you would typically have to create an expensive object from scratch</li>
                                 <li className="notNumbered">Reusable code</li>
                             </ul>
                         </div>
                         <div className="disadvantages"><div style={{ fontSize: "25px" }}>Disadvantages</div>
                             <ul style={{ paddingLeft: "40px" }}>
-                                <li className="notNumbered">Adding more classes and interfaces increases the complexity of the code</li>
+                                <li className="notNumbered">Less useful when objects do not share many attributes</li>
                             </ul>
                         </div>
                     </div>
